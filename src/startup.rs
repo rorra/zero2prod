@@ -1,4 +1,4 @@
-use crate::routes::{confirm, health_check, publish_newsletter, subscribe};
+use crate::routes::{confirm, health_check, publish_newsletter, subscribe, home, login_form, login};
 use actix_web::dev::Server;
 use actix_web::web::Data;
 use actix_web::{web, App, HttpServer};
@@ -27,7 +27,7 @@ impl Application {
             configuration.email_client.base_url,
             sender_email,
             configuration.email_client.authorization_token,
-            timeout
+            timeout,
         );
         let address = format!(
             "{}:{}",
@@ -39,7 +39,7 @@ impl Application {
             listener,
             connection_pool,
             email_client,
-            configuration.application.base_url
+            configuration.application.base_url,
         )?;
 
         Ok(Self { port, server })
@@ -79,6 +79,9 @@ pub fn run(
             .route("/subscriptions", web::post().to(subscribe))
             .route("/subscriptions/confirm", web::get().to(confirm))
             .route("/newsletters", web::post().to(publish_newsletter))
+            .route("/", web::get().to(home))
+            .route("/login", web::get().to(login_form))
+            .route("/login", web::post().to(login))
             .app_data(db_pool.clone())
             .app_data(email_client.clone())
             .app_data(base_url.clone())

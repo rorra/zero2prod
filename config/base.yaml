@@ -16,3 +16,5 @@ email_client:
   sender_email: "test@gmail.com"
   timeout_milliseconds: 10000
   authorization_token: "bbf6c070-ef53-4edd-b1a8-103f06b3a2e5"
+
+redis_uri: "redis://127.0.0.1:6379"

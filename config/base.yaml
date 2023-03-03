@@ -1,7 +1,7 @@
 application:
   port: 8000
   base_url: "http://127.0.0.1"
-  hmac_secret: "s9~D(*(lqI(6HL[sG,ZhD)sv[/?+<3i~]/-Lt{!bItSdS}).Rk,AqN'GA8sg@uj"
+  hmac_secret: "f%GX6(m74Cg@SE73KX)cDCRPrQqZB^CEnFm3Y3KA9wnar!d4qFe9M7f2R)krq+r^7WPC^@CTMk+wEKzqT*Ey@@8Ww)&VN!QhsLs9IwJ)us+HSstCb32xgY9Vz3dVj4uG"
 
 database:
   host: "localhost"

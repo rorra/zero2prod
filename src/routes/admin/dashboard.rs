@@ -1,10 +1,11 @@
-use crate::session_state::TypedSession;
-use actix_web::{web, HttpResponse};
-use uuid::Uuid;
+use actix_web::{HttpResponse, web};
 use actix_web::http::header::ContentType;
+use actix_web::http::header::LOCATION;
 use anyhow::Context;
 use sqlx::PgPool;
-use actix_web::http::header::LOCATION;
+use uuid::Uuid;
+
+use crate::session_state::TypedSession;
 use crate::utils::e500;
 
 pub async fn admin_dashboard(
@@ -32,6 +33,7 @@ pub async fn admin_dashboard(
     <p>Welcome {username}!</p>
     <p>Available actions:</p>
     <ol>
+        <li><a href="/admin/newsletters">Publish newsletter</a></li>
         <li><a href="/admin/password">Change password</a></li>
         <li>
             <form name="logoutForm" action="/admin/logout" method="post">

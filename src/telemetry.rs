@@ -1,10 +1,10 @@
-use tracing::subscriber::set_global_default;
+use tokio::task::JoinHandle;
 use tracing::Subscriber;
+use tracing::subscriber::set_global_default;
 use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
 use tracing_log::LogTracer;
-use tracing_subscriber::{layer::SubscriberExt, EnvFilter, Registry};
+use tracing_subscriber::{EnvFilter, layer::SubscriberExt, Registry};
 use tracing_subscriber::fmt::MakeWriter;
-use tokio::task::JoinHandle;
 
 /// Compose multiple layers into a `tracing`'s subscriber.
 ///

@@ -1,11 +1,12 @@
 use actix_web::{HttpResponse, web};
 use actix_web_flash_messages::FlashMessage;
-use secrecy::{Secret, ExposeSecret};
-use crate::utils::{e500, see_other};
-use crate::routes::admin::dashboard::get_username;
-use crate::authentication::{validate_credentials, AuthError, Credentials};
+use secrecy::{ExposeSecret, Secret};
 use sqlx::PgPool;
+
+use crate::authentication::{AuthError, Credentials, validate_credentials};
 use crate::authentication::UserId;
+use crate::routes::admin::dashboard::get_username;
+use crate::utils::{e500, see_other};
 
 #[derive(serde::Deserialize)]
 pub struct FormData {

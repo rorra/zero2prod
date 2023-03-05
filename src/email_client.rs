@@ -1,8 +1,8 @@
-use crate::domain::SubscriberEmail;
 use reqwest::Client;
-use secrecy::Secret;
 use secrecy::ExposeSecret;
+use secrecy::Secret;
 
+use crate::domain::SubscriberEmail;
 
 pub struct EmailClient {
     http_client: Client,
@@ -70,14 +70,15 @@ struct SendEmailRequest<'a> {
 
 #[cfg(test)]
 mod tests {
-    use crate::domain::SubscriberEmail;
-    use crate::email_client::EmailClient;
+    use claim::{assert_err, assert_ok};
+    use fake::{Fake, Faker};
     use fake::faker::internet::en::SafeEmail;
     use fake::faker::lorem::en::{Paragraph, Sentence};
-    use fake::{Fake, Faker};
-    use wiremock::{Mock, MockServer, ResponseTemplate, Request};
-    use wiremock::matchers::{header, header_exists, path, method, any};
-    use claim::{assert_ok, assert_err};
+    use wiremock::{Mock, MockServer, Request, ResponseTemplate};
+    use wiremock::matchers::{any, header, header_exists, method, path};
+
+    use crate::domain::SubscriberEmail;
+    use crate::email_client::EmailClient;
 
     struct SendEmailBodyMatcher;
 

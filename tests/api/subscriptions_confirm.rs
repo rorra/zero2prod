@@ -1,6 +1,7 @@
+use wiremock::{Mock, ResponseTemplate};
+use wiremock::matchers::{method, path};
+
 use crate::helpers::spawn_app;
-use wiremock::{ResponseTemplate, Mock};
-use wiremock::matchers::{path, method};
 
 #[tokio::test]
 async fn confirmations_without_token_are_rejected_with_a_400() {
